@@ -1,0 +1,2450 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lastharbor.github.io/mkdocs-notes/Dev%20Ops%20Basics/DevOps">
+      
+      
+        <link rel="prev" href="../../About">
+      
+      
+        <link rel="next" href="../Proxmox">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Devops - Notes for DevOps</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="light" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#devops" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Notes for DevOps" class="md-header__button md-logo" aria-label="Notes for DevOps" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes for DevOps
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Devops
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="light" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Notes for DevOps" class="md-nav__button md-logo" aria-label="Notes for DevOps" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Notes for DevOps
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../About" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dev Ops Basics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Dev Ops Basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Devops
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Devops
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Страницы
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пользователи и VIM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Пользователи и VIM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vim_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пользователи
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пользователь в Linux состоит из таких частей
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Создание пользователя
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Редактирование пользователя
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Файл с паролями
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Смена пароля
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Флаги доступа
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suid" class="md-nav__link">
+    <span class="md-ellipsis">
+      SUID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sgid" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sticky-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sticky-bit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Права доступа
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Группы пользователей
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Создание группы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Подключение при помощи ключа SSH
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Подключение при помощи ключа SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Копирование файлов через SSH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Мониторинг
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Мониторинг">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Команды
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Производительность
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uptime" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uptime
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Процессы и перенаправление вывода
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Процессы и перенаправление вывода">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Стандартные потоки
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Стандартные потоки">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stdin-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      STDIN — ввод — 0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdout-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      STDOUT — вывод — 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stderr-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      STDERR — ошибки — 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Фоновые процессы и полезные команды
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      Планировщик задач Cron
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Скрипты
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Скрипты">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Исполнение скрипта без указания ./ в определенной директории
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Исполнение скрипта без указания ./ в определенной директории">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      Условный оператор if
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      Арифметические операции
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Арифметические операции">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Оператор выбора
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    <span class="md-ellipsis">
+      Цикл While
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#until" class="md-nav__link">
+    <span class="md-ellipsis">
+      Until
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      Настройки приглашения командной строки
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      Способ передачи многострочного текста в команду
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      Функции
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      Архивация
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#awk" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sed" class="md-nav__link">
+    <span class="md-ellipsis">
+      SED
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      IP, DNS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#www" class="md-nav__link">
+    <span class="md-ellipsis">
+      WWW
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WWW">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      Системы инициализации
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Системы инициализации">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Systemd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      Основные виды юнитов
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symlink-hardlink" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symlink и hardlink
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      Каталог /dev
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      Монтирование файловой системы
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      Разметка диска
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      Реляционные базы данных
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Реляционные базы данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Типы данных MySQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dml-ddl-transaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      DML, DDL, Transaction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      Транзакции
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Транзакции">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acid-" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACID - свойства
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base - свойства
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      Не реляционные базы данных
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Не реляционные базы данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cap-" class="md-nav__link">
+    <span class="md-ellipsis">
+      CAP - Теорема
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      Основные виды моделей организаций данных
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      Резервное копирование
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Резервное копирование">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      Виды резервного копирования
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Создание Backup базы данныз
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP/IP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP/IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      Канальный уровень
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      Сетевой уровень
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      Частные диапозоны
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      Транспортный уровень
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Proxmox" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Proxmox
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Scripts
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Scripts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Scripts/Scripts" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Страницы
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пользователи и VIM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Пользователи и VIM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vim_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пользователи
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пользователь в Linux состоит из таких частей
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Создание пользователя
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Редактирование пользователя
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Файл с паролями
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Смена пароля
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Флаги доступа
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suid" class="md-nav__link">
+    <span class="md-ellipsis">
+      SUID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sgid" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sticky-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sticky-bit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Права доступа
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Группы пользователей
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Создание группы
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Подключение при помощи ключа SSH
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Подключение при помощи ключа SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Копирование файлов через SSH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Мониторинг
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Мониторинг">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Команды
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Производительность
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uptime" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uptime
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Процессы и перенаправление вывода
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Процессы и перенаправление вывода">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Стандартные потоки
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Стандартные потоки">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stdin-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      STDIN — ввод — 0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdout-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      STDOUT — вывод — 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stderr-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      STDERR — ошибки — 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Фоновые процессы и полезные команды
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      Планировщик задач Cron
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Скрипты
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Скрипты">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Исполнение скрипта без указания ./ в определенной директории
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Исполнение скрипта без указания ./ в определенной директории">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      Условный оператор if
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      Арифметические операции
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Арифметические операции">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Оператор выбора
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    <span class="md-ellipsis">
+      Цикл While
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#until" class="md-nav__link">
+    <span class="md-ellipsis">
+      Until
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      Настройки приглашения командной строки
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      Способ передачи многострочного текста в команду
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      Функции
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      Архивация
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#awk" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sed" class="md-nav__link">
+    <span class="md-ellipsis">
+      SED
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      IP, DNS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#www" class="md-nav__link">
+    <span class="md-ellipsis">
+      WWW
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WWW">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      Системы инициализации
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Системы инициализации">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Systemd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      Основные виды юнитов
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symlink-hardlink" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symlink и hardlink
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      Каталог /dev
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      Монтирование файловой системы
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      Разметка диска
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      Реляционные базы данных
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Реляционные базы данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Типы данных MySQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dml-ddl-transaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      DML, DDL, Transaction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      Транзакции
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Транзакции">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acid-" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACID - свойства
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base - свойства
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      Не реляционные базы данных
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Не реляционные базы данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cap-" class="md-nav__link">
+    <span class="md-ellipsis">
+      CAP - Теорема
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      Основные виды моделей организаций данных
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      Резервное копирование
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Резервное копирование">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      Виды резервного копирования
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Создание Backup базы данныз
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP/IP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP/IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      Канальный уровень
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      Сетевой уровень
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      Частные диапозоны
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      Транспортный уровень
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="devops">DevOps</h1>
+<hr />
+<h2 id="_1">Страницы</h2>
+<p>Настройка ZSH окружения Linux -
+ <a href="https://www.linuxfordevices.com/tutorials/linux/make-arch-terminal-awesome">https://www.linuxfordevices.com/tutorials/linux/make-arch-terminal-awesome</a></p>
+<hr />
+<p><a href="../Proxmox">Proxmox</a></p>
+<hr />
+<p><img alt="Untitled" src="../Pictures/Untitled.png" /></p>
+<p><a href="https://onformix.blogspot.com/2017/01/autoreg-dns-mikrotik.html">Автоматическая регистрация имён хостов в DNS на MikroTik</a></p>
+<p>Полезная статья по автоматическому созданию статической DNS записи</p>
+<hr />
+<p>Настройка fail2ban для защиты sshd</p>
+<p><a href="https://blog.sedicomm.com/2019/10/23/kak-ustanovit-fail2ban-dlya-zashhity-ssh-na-centos-rhel-8/">Как установить Fail2ban для защиты SSH на CentOS / RHEL 8</a></p>
+<hr />
+<p>Импорт публичного ключа на сервер</p>
+<p><a href="https://www.artur.lv/ssh-avtorizatsiya-po-klyucham-putty/">SSH авторизация по ключам. PuTTy | Блоговик</a></p>
+<hr />
+<p>Установка Webmin на CentOS 8</p>
+<p><a href="https://linuxize.com/post/how-to-install-webmin-on-centos-8/">How to Install Webmin on CentOS 8</a></p>
+<hr />
+<p>Создание сертификата Let’s encrypt в apache CentOS</p>
+<p><a href="https://www.8host.com/blog/sozdanie-sertifikata-lets-encrypt-dlya-apache-v-centos-7/">Создание сертификата Let’s Encrypt для Apache в CentOS 7</a></p>
+<h2 id="vim">Пользователи и VIM</h2>
+<h3 id="vim_1">VIM</h3>
+<p>W - переместиться на начало слова
+E  - переместиться на конец слова</p>
+<p>B - переместить курсор в начало слова c конца</p>
+<h3 id="_2">Пользователи</h3>
+<p>При выводе файла /etc/passwd мы получаем примерно вот такой вывод в командную строку.</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%201.png" /></p>
+<h3 id="linux">Пользователь в Linux состоит из таких частей</h3>
+<p><img alt="Untitled" src="../Pictures/Untitled%202.png" /></p>
+<p>Пользователь с uid 0:0 имеет неограниченные права на систему(удаление, изменение, добавление)</p>
+<h3 id="_3">Создание пользователя</h3>
+<p>Создать пользователя мы можем при помощи команды useradd</p>
+<p>Пример команды</p>
+<pre><code class="language-bash">useradd username -b /home/username -c &quot;Username Usernameov&quot; -g userfroup -p password
+
+Или же
+
+adduser username
+</code></pre>
+<p>Команда является не интерактивной, т.е при создании пользователя не будет создана домашняя директория, пользователь не будет добавлен в группу  а так же  не будет задан пароль.
+Для интерактивного создания пользователя используется <strong>adduser.</strong></p>
+<h3 id="_4">Редактирование пользователя</h3>
+<p>Для редактирования атрибутов пользователя используется команда usermod
+Команда не является интерактивной, поэтому для изменения атрибутов нужно использовать дополнительные ключи.</p>
+<p>Пример</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%203.png" /></p>
+<h3 id="_5">Файл с паролями</h3>
+<p>Файл с паролями находится по пути /etc/shadow</p>
+<p>Доступ на чтение к нему имеет только root</p>
+<p>Структура файла выглядит так</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%204.png" /></p>
+<p>Структура записи в файл выглядит таким образом</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%205.png" /></p>
+<h3 id="_6">Смена пароля</h3>
+<p>Для смены пароля используется утилита passwd.</p>
+<pre><code class="language-bash">passwd username
+</code></pre>
+<h3 id="_7">Флаги доступа</h3>
+<ul>
+<li>SUID</li>
+<li>SGID</li>
+<li>Sticky-bit</li>
+</ul>
+<h3 id="suid">SUID</h3>
+<p>Запуск файла с теми правами, которые есть у владельца файла, а не у пользователя, который его запускает.</p>
+<pre><code class="language-bash">chmod u+s file
+</code></pre>
+<h3 id="sgid">SGID</h3>
+<ul>
+<li>Запуск файла с теми правами, которые есть у группы владельца файла, а не у группы пользователя, который его запускает</li>
+<li>Группа-владелец созданных в каталоге файлов — группа владельца директории, а не группа, которой принадлежит пользователь, создавший файл.</li>
+</ul>
+<pre><code class="language-bash">chmod g+s dir - используется для каталогов
+</code></pre>
+<h3 id="sticky-bit">Sticky-bit</h3>
+<p>Файл в директории может удалить только тот, кто этот файл создал.</p>
+<pre><code class="language-bash">chmod +t dir - даёт права на удаление только создателю директории.
+</code></pre>
+<p>Материал по данной теме
+<a href="https://losst.pro/prava-dostupa-k-fajlam-v-linux?ysclid=ly5u254la660647224">https://losst.pro/prava-dostupa-k-fajlam-v-linux?ysclid=ly5u254la660647224</a></p>
+<h3 id="_8">Права доступа</h3>
+<p>В Linux можно назначать права доступа цифрами
+Чтение - 4</p>
+<p>Запись - 2</p>
+<p>Исполнение - 1</p>
+<p>Пример назначения прав доступа выглядит так</p>
+<pre><code class="language-bash">sudo chmod 777 example.txt
+</code></pre>
+<p>Где первая 7 означает владелец, вторая 7 означает группа, а третья 7 означает остальных пользователей.</p>
+<h3 id="_9">Группы пользователей</h3>
+<p>Файл групп выглядит так</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%206.png" /></p>
+<p>Формат записи группы выглядит таким образом</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%207.png" /></p>
+<h3 id="_10">Создание группы</h3>
+<p>Для создания группы используется следующая команда</p>
+<pre><code class="language-bash">groupadd groupname
+</code></pre>
+<p><img alt="{707CF12C-DC1C-4D43-9C1D-94D959FFFBE8}.png" src="../Pictures/707CF12C-DC1C-4D43-9C1D-94D959FFFBE8.png" /></p>
+<h2 id="ssh">Подключение при помощи ключа SSH</h2>
+<ul>
+<li>Генерируем ключевую пару ssh-keygen -t ed25519 -C “comment”, где ssh-keygen это исполняемый файл, который генерирует ключи. -t ED25519 - это тип ключа. -C “comment”  - добавляет комментарий к ключу.</li>
+<li>Копируем открытый ключ на сервер: ssh-copy-id -i “key.pub” user@server</li>
+<li>Подключаемся к серверу ssh user@server</li>
+</ul>
+<h3 id="ssh_1">Копирование файлов через SSH</h3>
+<p>Копирование осуществляется через SSH при помощи команды scp.</p>
+<p>Пример использования scp &lt;опции&gt; user1@server2:&lt;путь до файла&gt; user2@server2:&lt;путь до файла&gt;</p>
+<p>Опция -r позволяет копировать целые папки</p>
+<p>Дополнительные примеры:</p>
+<ul>
+<li>scp user@server:/tmp/1.txt /home/example — Это копирование с сервера к себе на машину</li>
+<li>scp /home/example/1.txt user@server:/tmp — Это копирование на удаленный сервер.</li>
+</ul>
+<h2 id="_11">Мониторинг</h2>
+<h3 id="_12">Команды</h3>
+<p>Краткое имя сервера - hostname</p>
+<p>Полное имя - hostname -f</p>
+<p>Узнать версию OS - cat /etc/os-release</p>
+<p>Узнать версию ядра - uname -r</p>
+<p>Модель процессора - cat /proc/cpiuinfo | less</p>
+<p>Объем памяти - free -h | старый способ - sudo dmesg | grep Memory\:</p>
+<p>Дисковые устройства - lsblk —fs; lsblk -o NAME, SIZE, FSTYPE, FSSIZE, FSUSED, MOUNTPOINT, PARTTYPENAME</p>
+<p>Точки монтирования - cat /etc/fstab</p>
+<p>Свободное место на диске - df -h</p>
+<p>Сетевые интерфейсы:</p>
+<ul>
+<li>ip link show</li>
+<li>ifconfig</li>
+<li>sudo lshw -class network -short</li>
+<li>ip -br address show</li>
+<li>netstat -rn</li>
+<li>ip route show</li>
+<li>cat /etc/resolv.conf</li>
+</ul>
+<p>Настройки времени - date; ls -l /etc/localtime; timedatectl</p>
+<p>Вся линейка утилит ls*</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%208.png" /></p>
+<h3 id="_13">Производительность</h3>
+<p>Процессор и память</p>
+<ul>
+<li>openssl speed -evp md5 -multi N</li>
+<li>sysbench cpu run —threads=n —time=60</li>
+<li>sysbench memory run —threads=N —time=60</li>
+</ul>
+<p>Диски</p>
+<p>Скорость записи:</p>
+<p>dd if=/dev/zero of /tmp/test1.img bs=256M count=20 oflag-dsync</p>
+<p>Скорость чтения</p>
+<p>time dd if=/path/to/file of=/dev/null ms=8k</p>
+<h3 id="uptime">Uptime</h3>
+<p>uptime или w</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%209.png" /></p>
+<p>Смотрим список процессов - ps -ef</p>
+<p>Смотрим дочерние процессы - pstree -p <PID> PID - ID процесса.</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2010.png" /></p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2011.png" /></p>
+<h2 id="_14">Процессы и перенаправление вывода</h2>
+<p>Убить процесс</p>
+<pre><code class="language-bash">kill &quot;pid&quot; 
+</code></pre>
+<p>Преобразование вывода</p>
+<p><strong>Команда cut — это команда выборки отдельных полей из строк файла.</strong></p>
+<p>Она используется для выборки колонок из таблицы или полей из каждой строки файла. Если применить терминологию баз данных, команда cut выполняет операцию проекции отношения.</p>
+<p><a href="https://losst.pro/komanda-cut-linux?ysclid=ly5jxs4ib2795871247">https://losst.pro/komanda-cut-linux?ysclid=ly5jxs4ib2795871247</a></p>
+<pre><code class="language-bash">cut опции путь_к_файлу
+</code></pre>
+<p><strong>Команда</strong> <strong>tr</strong> - это утилита командной строки UNIX для перевода или удаления символов. Она поддерживает ряд преобразований, включая преобразование верхнего регистра в нижний, сжатие повторяющихся символов, удаление определенных символов и базовый поиск и замену.</p>
+<p><a href="https://losst.pro/komanda-tr-v-linux?ysclid=ly5jvjn3ds742307682">https://losst.pro/komanda-tr-v-linux?ysclid=ly5jvjn3ds742307682</a></p>
+<pre><code class="language-bash">tr [КЛЮЧ]... НАБОР1 [НАБОР2]
+</code></pre>
+<p><a href="https://losst.pro/komanda-xargs-linux?ysclid=ly5juzw62w597349948">https://losst.pro/komanda-xargs-linux?ysclid=ly5juzw62w597349948</a></p>
+<p><strong>xargs — утилита для формирования списка аргументов и выполнения команды в UNIX-подобных операционных системах.</strong></p>
+<pre><code class="language-bash">первая_команда | xargs опции вторая_команда аргументы
+</code></pre>
+<p><strong>Cat</strong> (от англ. concatenate) — <strong>утилита UNIX, выводящая последовательно указанные файлы (или устройства), объединяя их в единый поток.</strong></p>
+<p>Если вместо имени файла указывается «-», то читается стандартный ввод.</p>
+<p><strong>Может использоваться в следующих случаях:</strong></p>
+<ol>
+<li>Когда требуется вывести куда-то файл без изменений.</li>
+<li>Когда требуется объединить более одного файла (например, части одного файла, разбитого командой split), либо файл(ы) с потоком стандартного ввода.</li>
+<li>Когда требуется просмотреть содержимое файла.</li>
+</ol>
+<p><a href="https://losst.pro/komanda-cat-linux?ysclid=ly5k0de324112823541">https://losst.pro/komanda-cat-linux?ysclid=ly5k0de324112823541</a></p>
+<pre><code class="language-bash">cat опции файл1 файл2 ...
+</code></pre>
+<p>Команда <strong>du</strong> (Disk Usage, т.е. использование диска) – это стандартная команда Unix/Linux, используется для показа суммарной информации об использовании диска файлами и директориями.</p>
+<p><a href="https://losst.pro/komanda-du-v-linux?ysclid=ly5lix5244130731945">https://losst.pro/komanda-du-v-linux?ysclid=ly5lix5244130731945</a></p>
+<pre><code class="language-bash">du опции /путь/к/папке
+
+du -h - будет показывать размерность файла(МБайт, КБайт)
+</code></pre>
+<h3 id="_15">Стандартные потоки</h3>
+<ul>
+<li>Команда xargs превращает строку, полученную на стандартный ввод в аргументы и передаёт их команде.</li>
+<li>Операторы перенаправления вывода:  &gt;, &gt;&gt;.</li>
+<li>Пайп позволяет передать стандартный вывод одной команды на стандартный ввод другой.</li>
+</ul>
+<h4 id="stdin-0">STDIN  —  ввод  —  0</h4>
+<h4 id="stdout-1">STDOUT  — вывод  —  1</h4>
+<h4 id="stderr-2">STDERR  —  ошибки  —  2</h4>
+<p><img alt="Untitled" src="../Pictures/Untitled%2012.png" /></p>
+<h3 id="_16">Фоновые процессы и полезные команды</h3>
+<p>declare используется для создания переменной</p>
+<p>unset для удаления переменной</p>
+<p>declare с ключом -r используется для создания константы</p>
+<pre><code class="language-bash">declare -r 
+</code></pre>
+<p>alias позволяет посмотреть список всех доступных алиасов в системе (алиас присваивается для упрощения работы с командой - например ps -auxf сокращается до pss по средствам выполнения команды</p>
+<pre><code class="language-bash">alias pss “ps -auxf”
+</code></pre>
+<p>Для выполнения команды в фоновом режиме достаточно добавить в конце команды символ &amp;
+<a href="https://losst.pro/kak-zapustit-protsess-v-fone-linux?ysclid=lz8gg59p44543443975">https://losst.pro/kak-zapustit-protsess-v-fone-linux?ysclid=lz8gg59p44543443975</a></p>
+<p>Команда jobs показывает все фоновые задачи</p>
+<p>bg <em><em>номер процесса</em>  -</em> переводит процесс в фоновые режим</p>
+<p>fg - выводит процесс из фона</p>
+<p>Перенаправление вывода команды в пустоту</p>
+<pre><code class="language-bash">*команда* напрмер
+traceroute ya.ru &amp;&gt; /dev/null
+</code></pre>
+<p>После этого мы можем посмотреть код возврата командой echo $?</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2013.png" /></p>
+<h2 id="cron">Планировщик задач Cron</h2>
+<p><strong>Cron</strong> позволяет запуcкать команды/скрипты по рассписанию.</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2014.png" /></p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2015.png" /></p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2016.png" /></p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2017.png" /></p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2018.png" /></p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2019.png" /></p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2020.png" /></p>
+<h2 id="_17">Скрипты</h2>
+<p>Написание скрипта начинается вот с такой строчки</p>
+<p><a href="https://losst.pro/napisanie-skriptov-na-bash?ysclid=ly6usffegc342352856">https://losst.pro/napisanie-skriptov-na-bash?ysclid=ly6usffegc342352856</a></p>
+<pre><code class="language-bash">#! /bin/bash
+</code></pre>
+<p>Обозначение переменной в Bash</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2021.png" /></p>
+<p>Принцип определения исполняемого файла</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2022.png" /></p>
+<p>Специальный параметр</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2023.png" /></p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2024.png" /></p>
+<h3 id="_18">Исполнение скрипта без указания ./ в определенной директории</h3>
+<p>Для того скрипт выполнялся без указания директории ./ необходимо добавить нужную нам директорию в $PATH. Для этого мы выполним следующие действия.</p>
+<ol>
+<li>Убедиться что скрипт имеет право на исполнение. Для этого используйте команду chmod</li>
+</ol>
+<pre><code class="language-bash">chmod +x my_scripth.sh
+</code></pre>
+<ol>
+<li>Добавляем нужную нам директорию в переменную окружения PATH. Для этого откройте файл конфигурации вашего shell ( обычно это .bashrc или .bash_profile) и добавьте в конце строчку</li>
+</ol>
+<pre><code class="language-bash">export PATH=$PATH:&quot;/home/%user%/scripts&quot;
+</code></pre>
+<ol>
+<li>Примените изменения</li>
+</ol>
+<pre><code class="language-bash">source ~./bashrc
+</code></pre>
+<p>После этого у вас появляется возможность запускать скрипты без указания ./  в директории, которую вы указали в переменной PATH.</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2025.png" /></p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2026.png" /></p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2027.png" /></p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2028.png" /></p>
+<p>Для переноса директории содержащей пробелы скриптом, требуется переменную в скрипте заключить в двойные кавычки - “”</p>
+<h4 id="if">Условный оператор if</h4>
+<p>В Bash условный оператор if записывается следующим образом</p>
+<pre><code class="language-bash">if [ a = b ]
+ then
+ echo &quot;A = B&quot;
+ else
+ echo &quot;A do not match B&quot;
+fi
+</code></pre>
+<h4 id="_19">Арифметические операции</h4>
+<p><a href="https://devhops.ru/linux/bash/arithmetics.php">Арифметические операции в Bash скрипте</a></p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2029.png" /></p>
+<p>let - это встроенная функция bash, которая позволяет производить базовые арифметические операции.</p>
+<p>Команда не умеет выводить результат на стандартный вывод.</p>
+<pre><code class="language-bash">let &lt;арифметическая операция&gt;
+</code></pre>
+<p>expr - похож на <strong>let</strong> за исключением того, что вместо сохранения результата в переменную <strong>expr</strong> по умолчанию печатает ответ.</p>
+<p>Но никто не запрещает сохранять результат <strong>expr</strong> в переменные с помощью command substitution: <strong>x = $(expr 2 + 2).</strong> В отличие</p>
+<p>от <strong>let</strong> не нужно заключать выражения с пробелами в кавычки.</p>
+<p>Нужно ставить пробелы вокруг операторов.</p>
+<h5 id="_20">Оператор выбора</h5>
+<p><a href="https://metanit.com/os/linux/12.9.php?ysclid=lzmirwcymr695353212">Командная строка Linux | Конструкция case (metanit.com)</a></p>
+<p>Конструкция <strong>case</strong> позволяет сопоставить некоторое выражение (например, переменную) с рядом значений. И если сравниваемое выражение равно определенному значению, то выполнить некоторый набор команд. Общий синтаксис конструкции:</p>
+<pre><code class="language-jsx">case &quot;$перменная&quot; in
+&quot;вариант1&quot; ) команда;;
+&quot;вариант2&quot; ) команда;;
+*)
+esac
+</code></pre>
+<h4 id="while">Цикл While</h4>
+<p>Тело цикла While выглядит следующим образом</p>
+<pre><code class="language-bash">
+while [CONDITION]
+do
+  [COMMANDS]
+done
+</code></pre>
+<p><a href="https://routerus.com/bash-while-loop/">Цикл while в Bash - Команды Linux</a></p>
+<h4 id="until">Until</h4>
+<p>Цикл « <code>until</code> используется для выполнения заданного набора команд до тех пор, пока данное условие оценивается как ложное.</p>
+<p>Цикл Bash <code>until</code> принимает следующую форму:</p>
+<pre><code class="language-bash">until [CONDITION]
+do
+  [COMMANDS]
+done
+</code></pre>
+<h4 id="_21">Настройки приглашения командной строки</h4>
+<p><a href="https://zencod.ru/articles/prompt-string-bash/">ZENCOD.ru</a></p>
+<p><img alt="image.png" src="../Pictures/image.png" /></p>
+<p><strong>Ctrl + R - поиск по истории вводимых команд в shell linux.</strong></p>
+<h4 id="_22">Способ передачи многострочного текста в команду</h4>
+<p><a href="https://linuxize.com/post/bash-heredoc/">Bash Heredoc</a></p>
+<p><img alt="image.png" src="../Pictures/image%201.png" /></p>
+<h4 id="_23">Функции</h4>
+<p>Синтаксис создания функции очень прост:</p>
+<pre><code class="language-bash">**имя_функции() { список_команд }**
+</code></pre>
+<p>Имя функции не должно совпадать ни с одной из существующих команд или функций, а все команды в теле функции пишутся с новой строки.</p>
+<p><a href="https://losst.pro/funktsii-bash-v-skriptah">Функции bash в скриптах - Losst</a></p>
+<h4 id="_24">Архивация</h4>
+<p>По умолчанию в системах Unix/Linux включен встроенный архиватор tar, позволяющий запаковывать/распаковывать архив и выполнять много других операций с заархивированными файлами. В его функционал не входит компрессия, но он отлично работает с такими утилитами, как Gzip и BZip2 – с помощью них и выполняется сжатие файлов.</p>
+<p><a href="https://timeweb.com/ru/community/articles/komanda-tar-arhivaciya-raspakovka-i-szhatie-faylov-v-linux">Команда tar: архивация, распаковка и сжатие файлов в Linux</a></p>
+<h4 id="awk">AWK</h4>
+<p>Команда awk - один из самых мощных инструментов для обработки и фильтрации текста, доступный даже для людей никак не связных с программированием. Это не просто утилита, а целый язык разработанный для обработки и извлечения данных. В этой статье мы разберемся как пользоваться awk.</p>
+<p><a href="https://losst.pro/ispolzovanie-awk-v-linux">Использование awk в Linux</a></p>
+<p><img alt="image.png" src="../Pictures/image%202.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%203.png" /></p>
+<h4 id="sed">SED</h4>
+<p>Команда sed - это потоковый редактор текста, работающий по принципу замены. Его можно использовать для поиска, вставки, замены и удаления фрагментов в файле. С помощью этой утилиты вы можете редактировать файлы не открывая их. Будет намного быстрее если вы напишите что и на что надо заменить, чем вы будете открывать редактор vi, искать нужную строку и вручную всё заменять.</p>
+<p><a href="https://losst.pro/komanda-sed-linux"></a></p>
+<p><img alt="image.png" src="../Pictures/image%204.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%205.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%206.png" /></p>
+<h4 id="best-practices">Best Practices</h4>
+<h2 id="ip-dns">IP, DNS</h2>
+<p><img alt="Untitled" src="../Pictures/Untitled%2030.png" /></p>
+<p>traceroute - программа, которая показывает, какой путь проходит пакет, прежде чем достичь конечный хост.</p>
+<p>mtr - расширение для traceroute, которое помимо этого еще и пингует хосты и показывает задержку до этих хостов.</p>
+<p><img alt="Untitled" src="../Pictures/Untitled%2031.png" /></p>
+<h2 id="www">WWW</h2>
+<h3 id="http">HTTP</h3>
+<p><a href="https://habr.com/ru/articles/215117/">Простым языком об HTTP</a></p>
+<p><img alt="image.png" src="../Pictures/image%207.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%208.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%209.png" /></p>
+<h2 id="_25">Системы инициализации</h2>
+<p><a href="https://losst.pro/sistemy-initsializatsii-linux"></a></p>
+<p>Системы инициализации Linux</p>
+<p><a href="https://l.github.io/debian-handbook/html/ru-RU/unix-services.html">Глава 9. Сервисы Unix</a></p>
+<p><a href="https://habr.com/ru/companies/slurm/articles/255845/">Systemd за пять минут</a></p>
+<p><img alt="image.png" src="../Pictures/image%2010.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2011.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2012.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2013.png" /></p>
+<h3 id="systemd">Systemd</h3>
+<h3 id="_26">Основные виды юнитов</h3>
+<p><img alt="image.png" src="../Pictures/image%2014.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2015.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2016.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2017.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2018.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2019.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2020.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2021.png" /></p>
+<h2 id="symlink-hardlink">Symlink и hardlink</h2>
+<p><a href="https://losst.pro/simvolicheskie-i-zhestkie-ssylki-linux">Символические и жесткие ссылки Linux - Losst</a></p>
+<h2 id="dev">Каталог /dev</h2>
+<p><a href="https://linux-faq.ru/page/komanda-mknod">Команда mknod</a></p>
+<p><a href="https://losst.pro/podklyuchennye-ustrojstva-linux?ysclid=m0usb48c47724582123">Подключенные устройства Linux - Losst</a></p>
+<p><a href="https://www.tecmint.com/mknod-command/">How to Create Block Device Files Using mknod Command</a></p>
+<h2 id="_27">Монтирование файловой системы</h2>
+<p><a href="https://losst.pro/montirovanie-diska-v-linux?ysclid=m0usp3iemx999697633">Монтирование диска в Linux - Losst</a></p>
+<p><img alt="image.png" src="../Pictures/image%2022.png" /></p>
+<p>13 - Разметка диска</p>
+<h2 id="_28">Разметка диска</h2>
+<p><a href="https://losst.pro/komanda-fdisk-v-linux?ysclid=m0v0g7b4ti827967170">Команда fdisk в Linux - Losst</a></p>
+<p><a href="https://losst.pro/avtomaticheskoe-montirovanie-fstab-i-systemd?ysclid=m0v0ik3kcc175320115">Автоматическое монтирование fstab и systemd - Losst</a></p>
+<p>На данном скриншоте показано, как монтируется добавленый диск</p>
+<p><img alt="image.png" src="../Pictures/image%2023.png" /></p>
+<h2 id="_29">Реляционные базы данных</h2>
+<p><img alt="image.png" src="../Pictures/image%2024.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2025.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2026.png" /></p>
+<h3 id="mysql">Типы данных MySQL</h3>
+<p><img alt="image.png" src="../Pictures/image%2027.png" /></p>
+<h3 id="dml-ddl-transaction">DML, DDL, Transaction</h3>
+<p><img alt="image.png" src="../Pictures/image%2028.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2029.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2030.png" /></p>
+<h3 id="_30">Транзакции</h3>
+<h4 id="acid-">ACID - свойства</h4>
+<p><a href="https://habr.com/ru/companies/simbirsoft/articles/572540/">ACID. Что под капотом у транзакции</a></p>
+<ul>
+<li>Атомарность</li>
+<li>Согласованность</li>
+<li>Изолированность</li>
+<li>
+<p>Прочность</p>
+</li>
+<li>
+<p><strong>Атомарность</strong> гарантирует, что транзакция не может выполниться частично</p>
+</li>
+<li><strong>Согласованность</strong> требует, чтобы после завершения транзакции данные оставались консистентными и валидными.</li>
+<li><strong>Изолированность</strong> требует, чтобы при параллельном выполнении транзакции не влияли друг на друга.</li>
+<li><strong>Прочность</strong> гарантирует, что, если пользователь получил подтверждение, что транзакция выполнена, изменения не будут отменены из за какого-либо сбоя.</li>
+</ul>
+<h4 id="base-">Base - свойства</h4>
+<ul>
+<li>Базовая доступность (Basically available)</li>
+<li>Мягкое состояние (Soft state)</li>
+<li>Согласованность в конечном счёте (Eventual consistenct)</li>
+</ul>
+<h2 id="_31">Не реляционные базы данных</h2>
+<h3 id="cap-">CAP - Теорема</h3>
+<p>Для любой реализации распределенных вычислений возможно обеспечить не более двух из трёх следующих свойств.</p>
+<ul>
+<li>Согласованность (Consistency)</li>
+<li>Доступность (Availability)</li>
+<li>Устойчивость к разделению (Partition tolerance)</li>
+</ul>
+<h3 id="_32">Основные виды моделей организаций данных</h3>
+<ul>
+<li>Иерархическая модель</li>
+<li>Сетевая модель</li>
+<li>Реляционная модель</li>
+<li>Не реляционная модель</li>
+</ul>
+<h2 id="_33">Резервное копирование</h2>
+<h3 id="_34">Виды резервного копирования</h3>
+<h3 id="backup">Создание Backup базы данныз</h3>
+<ul>
+<li>Полное резервное копирование</li>
+<li>Дифференциальное резервное копирование</li>
+<li>Инкрементальное резервное копирование</li>
+</ul>
+<p>Создание бэкапа базы данных MySQL происходит следующим образом</p>
+<pre><code class="language-jsx">sudo mysqldump -u root mydb &gt; /tmp/dump.sql
+</code></pre>
+<p>Данная команда позволяет выполнить бэкап базы в виде её дампа.
+Так же мы можем заархивировать бэкап после его создания.
+Для этого используем следующую команду</p>
+<pre><code class="language-jsx">sudo mysqldump -u root -p *Password* mydb | gzip &gt; /tmp/dump.sql
+</code></pre>
+<h2 id="tcpip">TCP/IP</h2>
+<p><img alt="{42B48683-BFE9-4262-AACC-EAA9C9201685}.png" src="../Pictures/42B48683-BFE9-4262-AACC-EAA9C9201685.png" /></p>
+<h3 id="_35">Канальный уровень</h3>
+<p>Типы передачи данных</p>
+<ul>
+<li>Unicast</li>
+<li>Multicast</li>
+<li>Broadcast</li>
+</ul>
+<p><img alt="image.png" src="../Pictures/image%2031.png" /></p>
+<h3 id="_36">Сетевой уровень</h3>
+<p>Схема IP пакета</p>
+<p><img alt="image.png" src="../Pictures/image%2032.png" /></p>
+<p>Маска подсети</p>
+<p><img alt="image.png" src="../Pictures/image%2033.png" /></p>
+<p><img alt="image.png" src="../Pictures/image%2034.png" /></p>
+<h3 id="_37">Частные диапозоны</h3>
+<p><img alt="image.png" src="../Pictures/image%2035.png" /></p>
+<h3 id="_38">Транспортный уровень</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
